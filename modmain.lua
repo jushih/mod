@@ -146,8 +146,8 @@ if(mode == "fe_fixed") then
 	TUNING.TAKUMI_HEALTH = 125
 	TUNING.TAKUMI_HUNGER = 100
 	TUNING.TAKUMI_SANITY = 75
-	TUNING.TAKUMI_WALKSPEED = 6
-	TUNING.TAKUMI_RUNSPEED = 8
+	TUNING.TAKUMI_WALKSPEED = 4
+	TUNING.TAKUMI_RUNSPEED = 6
 	TUNING.TAKUMI_DAMAGE_MULTIPLIER = 0.8
 	TUNING.TAKUMI_DAMAGE_ABSORBTION = 0
 
@@ -163,8 +163,8 @@ elseif  mode == "fe_random" then
 	TUNING.TAKUMI_HEALTH = 125
 	TUNING.TAKUMI_HUNGER = 100
 	TUNING.TAKUMI_SANITY = 75
-	TUNING.TAKUMI_WALKSPEED = 6
-	TUNING.TAKUMI_RUNSPEED = 8
+	TUNING.TAKUMI_WALKSPEED = 4
+	TUNING.TAKUMI_RUNSPEED = 6
 	TUNING.TAKUMI_DAMAGE_MULTIPLIER = 0.8
 	TUNING.TAKUMI_DAMAGE_ABSORBTION = 0
 
@@ -180,8 +180,8 @@ elseif(mode == "fe_max") then
 	TUNING.TAKUMI_HEALTH = 300
 	TUNING.TAKUMI_HUNGER = 280
 	TUNING.TAKUMI_SANITY = 200
-	TUNING.TAKUMI_WALKSPEED = 10
-	TUNING.TAKUMI_RUNSPEED = 12
+	TUNING.TAKUMI_WALKSPEED = 8
+	TUNING.TAKUMI_RUNSPEED = 10
 	TUNING.TAKUMI_DAMAGE_MULTIPLIER = 1.2
 	TUNING.TAKUMI_DAMAGE_ABSORBTION = 0.2
 end
@@ -246,7 +246,7 @@ local function STATS(inst)
 			elseif mode == "fe_random" then
 				inst.components.talker:Say("[Gained Hunger".." : "..(inst.maxhunger-TUNING.TAKUMI_HUNGER).."] \n[ Gained Sanity ".." : "..(inst.maxsanity-TUNING.TAKUMI_SANITY).."]\n [Gained Health".." : "..(inst.maxhealth-TUNING.TAKUMI_HEALTH).."] \n[ Current Speed  ".." : "..(inst.currentwalkspeed).."] \n[ Current Damage Multiplier ".." : "..(inst.damagemultiplier).."] \n[ Current Damage Absorbtion  ".." : "..(inst.damageabsorbtion).."]")
 			elseif mode == "fe_max" then
-				inst.components.talker:Say("[Gained Hunger".." : "..(200).."] \n[ Gained Sanity ".." : "..(100).."]\n [Gained Health".." : "..(200).."] \n[ Gained Speed  ".." : "..(10).."] \n[ Current Damage Multiplier ".." : "..(1.2).."] \n[ Current Damage Absorbtion  ".." : "..(.2).."]")	
+				inst.components.talker:Say("[Gained Hunger".." : "..(180).."] \n[ Gained Sanity ".." : "..(125).."]\n [Gained Health".." : "..(200).."] \n[ Current Speed  ".." : "..(8).."] \n[ Current Damage Multiplier ".." : "..(1.2).."] \n[ Current Damage Absorbtion  ".." : "..(.2).."]")	
 			end
 			
 			--inst.sg:AddStateTag("notalking")
