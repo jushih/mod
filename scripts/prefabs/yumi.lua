@@ -39,8 +39,7 @@ local function onequip(inst, owner)
 			end
 	
 		else --if owner isn't takumi
-			inst:RemoveComponent("equippable")
-			inst:RemoveComponent("weapon")
+			owner:DoTaskInTime(0.5, function()  owner.components.inventory:GiveItem(inst) end)
 			owner.components.talker:Say("A bow without a bowstring.")
 				
 		end
