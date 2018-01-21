@@ -20,9 +20,8 @@ local start_inv =
 local function GetExp(inst)
 	if TUNING.LEVELUP == 0 then return end
 	
-	if inst.Level == 20 then
+	if inst.Level == 20 and inst:HasTag("classup") then
 		inst.maxlevel = TUNING.TAKUMI_LEVEL_MAX
-		inst:AddTag("classup")
 	elseif inst.Level > 20 then
 		inst.maxlevel = TUNING.TAKUMI_LEVEL_MAX
 	else
@@ -153,6 +152,18 @@ local function OnKill(inst, data)
 	end
 end
 
+local function classup (inst)
+	if inst.Level == 20 then
+		inst:AddTag("classup")
+		inst.components.sanity.night_drain_mult = 1
+		inst.components.sanity.neg_aura_mult = 1
+		inst.maxhealth = inst.maxhealth + 15
+		inst.maxhunger = inst.maxhunger + 20
+		inst.maxsanity = inst.maxsanity + 25
+		inst.Exp = 2000
+		GetExp(inst)
+	end
+end
 
 
 -- When the character is revived from human
@@ -255,7 +266,7 @@ local common_postinit = function(inst)
         inst:AddTag("insomniac")
 		
 	inst:AddTag("takumi")
-	
+	inst:AddTag("canclassup")
 	 
 	inst.MiniMapEntity:SetIcon( "takumi.tex" )
 	
@@ -321,7 +332,7 @@ local master_postinit = function(inst)
 	inst.damagemultiplier = TUNING.TAKUMI_DAMAGE_MULTIPLIER + 0.01
 	inst.damageabsorbtion = TUNING.TAKUMI_DAMAGE_ABSORBTION + 0.005
 	inst:ListenForEvent("killed", OnKill)
-	
+	inst:ListenForEvent("fireemblemclassup", classup)
 	
 	
 	inst.OnLoad = onload
