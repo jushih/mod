@@ -7,6 +7,7 @@ PrefabFiles = {
     "yumi",
     "windarrow",
     "fujinlight",   
+    "fujinlight2",   
 	"takumi_dirtpile",
 	"takumi_track",
 	"takumitrap",
