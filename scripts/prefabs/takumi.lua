@@ -4,6 +4,7 @@ local MakePlayerCharacter = require "prefabs/player_common"
 
 local assets = {
     Asset("SCRIPT", "scripts/prefabs/player_common.lua"),
+	Asset("ANIM","anim/takumi_classed.zip"),
 }
 local prefabs = 
 {
@@ -181,6 +182,10 @@ end
 local function onload(inst)
     inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
     inst:ListenForEvent("ms_becameghost", onbecameghost)
+	
+	if inst:HasTag("classup") then 
+		inst.AnimState:SetBuild("takumi_classed")
+	end
 
     if inst:HasTag("playerghost") then
         onbecameghost(inst)
@@ -283,6 +288,7 @@ local common_postinit = function(inst)
 	if TUNING.LEVELUP == 0 then
 		inst:AddTag("classup")
 	end
+	
 	--stat info
 	inst:AddComponent("keyhandler")
 	inst.components.keyhandler:AddActionListener("takumi", TUNING.TAKUMI.KEY, "INFO")

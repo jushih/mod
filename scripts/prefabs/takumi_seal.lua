@@ -3,6 +3,7 @@ local assets =
     Asset("ANIM", "anim/takumi_seal.zip"),
 	Asset( "IMAGE", "images/inventoryimages/takumi_seal.tex" ),
 	Asset("ATLAS", "images/inventoryimages/takumi_seal.xml"),
+	Asset("ANIM","anim/takumi_classed.zip"),
 }
 
 local function OnUseSeal(inst)
@@ -14,6 +15,7 @@ local function OnUseSeal(inst)
 	elseif owner:HasTag("canclassup") then
 		owner:PushEvent("fireemblemclassup")
 		inst.components.talker:Say("Class Up!")
+		inst.AnimState:SetBuild("takumi_classed")
 		inst.components.useableitem:StopUsingItem()
 		if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
             inst.components.stackable:Get():Remove()
