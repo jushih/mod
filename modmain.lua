@@ -135,7 +135,7 @@ TUNING.TAKUMI = {}
 TUNING.TAKUMI.KEY = GetModConfigData("takumi_level_key") or 107 
 TUNING.TAKUMI.KEY2 = GetModConfigData("takumi_stats_key") or 114 
 
-if(mode == "fe_fixed") then
+if  mode == "fe_fixed" then
 	
 	TUNING.TAKUMI_LEVEL_START = 1
 	TUNING.TAKUMI_LEVEL_TWENTY = 20
@@ -152,7 +152,7 @@ if(mode == "fe_fixed") then
 	TUNING.TAKUMI_DAMAGE_MULTIPLIER = 0.8
 	TUNING.TAKUMI_DAMAGE_ABSORBTION = 0
 
-elseif  mode == "fe_random" then
+elseif mode == "fe_random" then
 	
 	TUNING.TAKUMI_LEVEL_START = 1
 	TUNING.TAKUMI_LEVEL_TWENTY = 20
@@ -169,7 +169,7 @@ elseif  mode == "fe_random" then
 	TUNING.TAKUMI_DAMAGE_MULTIPLIER = 0.8
 	TUNING.TAKUMI_DAMAGE_ABSORBTION = 0
 
-elseif(mode == "fe_max") then
+elseif mode == "fe_max" then
 	TUNING.TAKUMI_LEVEL_START = 40
 	TUNING.TAKUMI_LEVEL_TWENTY = 20
 	TUNING.TAKUMI_LEVEL_MAX = 40

@@ -40,7 +40,7 @@ configuration_options = {
 			{description = "Random", data = "fe_random"},
 			{description = "Max", data = "fe_max"},
 		},
-		default = "fe_fixed",
+		default = "fe_random",
 	},
 	{
         name = "takumi_level_key",
