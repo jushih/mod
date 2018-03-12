@@ -21,7 +21,7 @@ local start_inv =
 local function GetExp(inst)
 	if TUNING.LEVELUP == 0 then return end
 	
-	if inst.Level == 20 and inst:HasTag("classup") then
+	if inst.Level == 20 and inst:HasTag("classed") then 
 		inst.maxlevel = TUNING.TAKUMI_LEVEL_MAX
 	elseif inst.Level > 20 then
 		inst.maxlevel = TUNING.TAKUMI_LEVEL_MAX
@@ -80,6 +80,8 @@ local function GetExp(inst)
 		inst.components.health:SetAbsorptionAmount(inst.damageabsorbtion)
 		
 		inst.components.talker:Say("[LEVEL UP!]")
+		
+		
 		if inst.Level == 21 then
 			inst.components.talker:Say("[CLASS UP!]")
 		end		
@@ -141,10 +143,16 @@ local function GetExp(inst)
 			inst.components.talker:Say("All right. Not bad.")
 		end
 		
+		
 		if inst.Level == 21 then
 			inst.components.talker:Say("[CLASS UP!]")
 		end		
 		
+	end
+	
+	if inst.Level == 20 then
+		inst:AddTag("canclassup")
+		print("Can Class Up")
 	end
 
 end
@@ -189,7 +197,10 @@ end
 
 local function classup (inst)
 	if inst.Level == 20 then
-		inst:AddTag("classup")
+		print("Classup")
+		inst:AddTag("classed")
+		inst:RemoveTag("canclassup")
+		inst:RemoveTag("insomniac")
 		inst.components.sanity.night_drain_mult = 1
 		inst.components.sanity.neg_aura_mult = 1
 		inst.maxhealth = inst.maxhealth + 15
@@ -197,6 +208,7 @@ local function classup (inst)
 		inst.maxsanity = inst.maxsanity + 25
 		inst.Exp = 2000
 		GetExp(inst)
+		print("classup")
 		
 		
 		inst.AnimState:SetBuild("takumi_classed")
@@ -224,7 +236,7 @@ local function onload(inst)
     inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
     inst:ListenForEvent("ms_becameghost", onbecameghost)
 	
-	if inst:HasTag("classup") then 
+	if inst:HasTag("classed") then 
 		inst.AnimState:SetBuild("takumi_classed")
 	end
 
@@ -251,9 +263,9 @@ local function onpreload(inst, data)
 			inst.components.hunger:DoDelta(0)
 			inst.components.sanity:DoDelta(0)
 			
-			if inst.Level > 20 then
-				inst:AddTag("classup")
-			end
+			if inst.Level > 20 then inst:AddTag("classed") end
+			if inst.Level == 20 then inst:AddTag("canclassup") end
+			
 		end
 		if data.Exp then
 			inst.Exp = data.Exp
@@ -309,10 +321,12 @@ end
 -- This initializes for both the server and client. Tags can be added here.
 local common_postinit = function(inst) 
 	-- Minimap icon
-        inst:AddTag("insomniac")
+	
+	if TUNING.LEVELUP ~= 0 then
+		inst:AddTag("insomniac")
+	end
 		
 	inst:AddTag("takumi")
-	inst:AddTag("canclassup")
 	 
 	inst.MiniMapEntity:SetIcon( "takumi.tex" )
 	
@@ -326,9 +340,7 @@ local common_postinit = function(inst)
 	inst.damagemultiplier = TUNING.TAKUMI_DAMAGE_MULTIPLIER 
 	inst.damageabsorbtion = TUNING.TAKUMI_DAMAGE_ABSORBTION
 	
-	if TUNING.LEVELUP == 0 then
-		inst:AddTag("classup")
-	end
+
 	
 	--stat info
 	inst:AddComponent("keyhandler")
@@ -365,7 +377,6 @@ local master_postinit = function(inst)
 	-- Sanity rate (optional)
 	inst.components.sanity.night_drain_mult = 1.5
     inst.components.sanity.neg_aura_mult = 1.75
---	inst.components.sanity.rate_modifier = 1
 	
 	
 	--level up info

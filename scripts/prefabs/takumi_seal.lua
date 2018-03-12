@@ -9,12 +9,15 @@ local assets =
 local function OnUseSeal(inst)
 
 	local owner = inst.components.inventoryitem.owner
-	if owner:HasTag("classup") then
+--	if owner.Level == 20 then
+--		inst.AddTag("canclassup")
+--	end
+	
+	if owner:HasTag("classed") then  --Takumi has already classed up
 		inst.components.useableitem:StopUsingItem()
-		inst.components.talker:Say("Nothing happned.")
-	elseif owner:HasTag("canclassup") then
+		inst.components.talker:Say("Nothing happened.")
+	elseif owner:HasTag("canclassup") then --Takumi is ready to class up
 		owner:PushEvent("fireemblemclassup")
-		inst.components.talker:Say("Class Up!")
 		inst.AnimState:SetBuild("takumi_classed")
 		inst.components.useableitem:StopUsingItem()
 		if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
@@ -24,6 +27,7 @@ local function OnUseSeal(inst)
         end
 	else
 		inst.components.useableitem:StopUsingItem()
+		inst.components.talker:Say("I need to get stronger.")
 	end
 	
 	
@@ -86,16 +90,6 @@ local function fn()
 	
 	
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
-
-    
-	
-	
-    --inst:AddComponent("classup")
-	
-	--inst:AddComponent("healer")
-    --inst.components.healer:SetHealthAmount(TUNING.HEALING_MEDSMALL)
-    --inst.components.classup:SetHealthAmount(999)
-	--inst.components.classup.sanityvalue = TUNING.SANITY_SMALL
 
 	
 	

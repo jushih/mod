@@ -32,8 +32,8 @@ server_filter_tags = {
 configuration_options = {
 	{
 		name = "mode",
-        label = "Fire Emblem Mode",
-        hover = "Adjust Leveling system mode",
+        label = "Stat Growths",
+        hover = "Adjust stat gain mode during level up.",
 		options =
 		{
 			{description = "Fixed", data = "fe_fixed"},
