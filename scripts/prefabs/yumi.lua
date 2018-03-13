@@ -37,7 +37,7 @@ local function onequip(inst, owner)
 			-- add light to the bow
 			if inst.fire == nil then
 			
-				if owner:HasTag("classup") then
+				if owner:HasTag("classed") then
 				
 					inst.fire = SpawnPrefab("fujinlight2")
 					inst.fire.entity:AddFollower()

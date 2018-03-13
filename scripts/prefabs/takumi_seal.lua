@@ -9,9 +9,7 @@ local assets =
 local function OnUseSeal(inst)
 
 	local owner = inst.components.inventoryitem.owner
---	if owner.Level == 20 then
---		inst.AddTag("canclassup")
---	end
+
 	
 	if owner:HasTag("classed") then  --Takumi has already classed up
 		inst.components.useableitem:StopUsingItem()

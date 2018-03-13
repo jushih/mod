@@ -90,7 +90,7 @@ STRINGS.RECIPE_DESC.TAKUMI_SEAL = "Used to promote at level 20."
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.takumi = "The Wildcard"
 STRINGS.CHARACTER_NAMES.takumi = "Takumi"
-STRINGS.CHARACTER_DESCRIPTIONS.takumi = "*Wielder of the Divine Bow\n*Distrustful"
+STRINGS.CHARACTER_DESCRIPTIONS.takumi = "*Wielder of the Divine Bow\n*Distrustful\n*Skilled at hunting"
 STRINGS.CHARACTER_QUOTES.takumi = "\"You can count on me...no matter what some may say.\""
 
 -- Custom speech strings
@@ -204,7 +204,7 @@ local function INFO(inst)
 		if not inst.keep_check then		
 			inst.keep_check = true	
 			if  mode  == "fe_fixed" or mode == "fe_random" then
-				if inst:HasTag("classup") then
+				if inst:HasTag("classed") then
 					inst.components.talker:Say("[Current Lvl ".." : "..(inst.Level).." / "..(TUNING.TAKUMI_LEVEL_MAX).." ]\n[ Current EXP".." : "..(inst.Exp).." / "..(TUNING.TAKUMI_EXP_MAX*inst.Level).." ]\n ")
 				else
 					inst.components.talker:Say("[Current Lvl ".." : "..(inst.Level).." / "..(TUNING.TAKUMI_LEVEL_TWENTY).." ]\n[ Current EXP".." : "..(inst.Exp).." / "..(TUNING.TAKUMI_EXP_MAX*inst.Level).." ]\n ")
