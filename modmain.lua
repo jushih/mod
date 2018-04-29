@@ -53,6 +53,11 @@ Assets = {
 	
 	Asset( "IMAGE", "images/inventoryimages/takumi_seal.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/takumi_seal.xml"),
+	
+	Asset("ATLAS", "images/inventoryimages/yumi.xml"),
+    Asset("IMAGE", "images/inventoryimages/yumi.tex"),
+
+
 }
 -- Active key
 -- Import the lib use.
@@ -86,6 +91,7 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.TAKUMITRAP = "A sturdy, well-made trap."
 --STRINGS.CHARACTERS.TAKUMI.DESCRIBE.YUMI = "The Fujin Yumi. The bow chose me as its wielder."
 STRINGS.RECIPE_DESC.TAKUMITRAP = "A sturdier trap made by a hunter." 
 STRINGS.RECIPE_DESC.TAKUMI_SEAL = "Used to promote at level 20."
+STRINGS.RECIPE_DESC.YUMI = "Bow of the wind god."
 
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.takumi = "The Wildcard"
@@ -129,6 +135,8 @@ takumi_trap.atlas = "images/inventoryimages/takumitrap.xml"
 local takumi_seal = AddRecipe("takumi_seal", {Ingredient("goldnugget", 20),Ingredient("gears", 1),Ingredient("redgem", 1)}, RECIPETABS.TAKUMI, TECH.NONE, nil, nil, nil, nil, "takumi" )
 takumi_seal.atlas = "images/inventoryimages/takumi_seal.xml"
 
+local yumi = AddRecipe("yumi", {Ingredient("rocks", 10),Ingredient("goldnugget", 10)}, RECIPETABS.TAKUMI, TECH.NONE, nil, nil, nil, nil, "takumi" )
+yumi.atlas = "images/inventoryimages/yumi.xml"
 
 --Tuning
 TUNING.TAKUMI = {}
@@ -227,6 +235,7 @@ local function INFO(inst)
 end
 AddModRPCHandler("takumi", "INFO", INFO)
 
+	
 --Stat info
 local function STATS(inst)
 	inst.writing = false
