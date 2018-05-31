@@ -61,9 +61,6 @@ local function fn()
         return inst
     end
 
---	inst.AddTag("master_seal")
-	inst:AddTag("molebait")	
-
 	
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.atlasname = "images/inventoryimages/takumi_seal.xml"
@@ -71,9 +68,6 @@ local function fn()
 	inst:AddComponent("inspectable")
 	inst:AddComponent("tradable")
     inst:AddComponent("stackable")
-    inst:AddComponent("edible")
-    inst.components.edible.foodtype = FOODTYPE.ELEMENTAL
-    inst.components.edible.hungervalue = 2
 	
 	
 	inst:AddComponent("talker")
@@ -81,10 +75,10 @@ local function fn()
 
 	inst:AddComponent("equippable")
 	inst.components.equippable.equipslot = EQUIPSLOTS.BODY
+	inst.components.armor:InitCondition(9999999999999999999999999999999999999999999999999999999999999, 0)
 	
 	inst:AddComponent("useableitem")
 	inst.components.useableitem:SetOnUseFn(OnUseSeal)
-	--inst.components.useableitem:SetOnStopUseFn(OffUseSeal)
 	
 	
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
