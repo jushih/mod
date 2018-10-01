@@ -18,6 +18,31 @@ local start_inv =
 }
 
 
+---checks Takumi's sanity and switches clothes. No change if already classed up.
+local function possessed (inst)
+
+	if inst:HasTag("classed") then 
+	
+		print("no change")
+		
+	elseif inst.components.sanity.current <= 75 then
+	
+		inst:AddTag("fallen")
+		inst:RemoveTag("canclassup")
+		inst.AnimState:SetBuild("ftakumi")
+			---inst.components.locomotor:SetExternalSpeedMultiplier(inst, "yourcharactername_speed_mod", 1 + .30 )
+	
+	else 
+
+		inst:AddTag("canclassup")
+		inst:RemoveTag("fallen")
+		inst.AnimState:SetBuild("takumi")
+			
+	end
+end
+
+
+
 local function GetExp(inst)
 	if TUNING.LEVELUP == 0 then return end
 	
@@ -220,6 +245,8 @@ local function classup (inst)
 end
 
 
+
+
 -- When the character is revived from human
 local function onbecamehuman(inst)
 	-- Set speed when reviving from ghost (optional)
@@ -235,6 +262,10 @@ end
 local function onload(inst)
     inst:ListenForEvent("ms_respawnedfromghost", onbecamehuman)
     inst:ListenForEvent("ms_becameghost", onbecameghost)
+	
+	if inst:HasTag("fallen") then 
+		inst.AnimState:SetBuild("ftakumi")
+	end
 	
 	if inst:HasTag("classed") then 
 		inst.AnimState:SetBuild("takumi_classed")
@@ -318,6 +349,8 @@ local function onsave(inst, data)
 	data.damagemultiplier = inst.damagemultiplier
 	data.damageabsorbtion = inst.damageabsorbtion
 end
+
+
 -- This initializes for both the server and client. Tags can be added here.
 local common_postinit = function(inst) 
 	-- Minimap icon
@@ -391,7 +424,9 @@ local master_postinit = function(inst)
 	inst.damageabsorbtion = TUNING.TAKUMI_DAMAGE_ABSORBTION + 0.005
 	inst:ListenForEvent("killed", OnKill)
 	inst:ListenForEvent("fireemblemclassup", classup)
-	
+--	inst:ListenforEvent("sanitydelta", possessed)
+
+ 
 	
 	inst.OnLoad = onload
     inst.OnNewSpawn = onload
