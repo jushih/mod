@@ -2,7 +2,7 @@
 name = "Takumi Test"
 description = "From Fire Emblem Fates. Second Prince of Hoshido and a skilled archer."
 author = "Julie"
-version = "2.2" -- This is the version of the template. Change it to your own number.
+version = "2.3" -- This is the version of the template. Change it to your own number.
 
 -- This is the URL name of the mod's thread on the forum; the part after the ? and before the first & in the url
 forumthread = "/files/file/950-extended-sample-character/"
