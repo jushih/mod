@@ -11,10 +11,7 @@ PrefabFiles = {
 	"takumi_dirtpile",
 	"takumi_track",
 	"takumitrap",
-	"takumi_seal",
-	"skadi",
-	"skadiarrow",
-	
+	"takumi_seal"
 }
 
 Assets = {
@@ -57,11 +54,8 @@ Assets = {
 	Asset( "IMAGE", "images/inventoryimages/takumi_seal.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/takumi_seal.xml"),
 	
-	Asset("IMAGE", "images/inventoryimages/yumi.tex"),
 	Asset("ATLAS", "images/inventoryimages/yumi.xml"),
-	
-    Asset("IMAGE", "images/inventoryimages/skadi.tex"),
-	Asset("ATLAS", "images/inventoryimages/skadi.xml"),
+    Asset("IMAGE", "images/inventoryimages/yumi.tex"),
 
 
 }
@@ -91,16 +85,13 @@ STRINGS.NAMES.TAKUMI_DIRTPILE = "Suspicious Dirt Pile"
 STRINGS.NAMES.TAKUMI_TRACK = "Track"
 STRINGS.NAMES.TAKUMITRAP = "Takumi's Trap"
 STRINGS.NAMES.TAKUMI_SEAL = "Master Seal"
-STRINGS.NAMES.SKADI = "Skadi"
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.YUMI = "A bow without a bowstring."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TAKUMITRAP = "A sturdy, well-made trap."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SKADI = "A bow emanating dark power."
 --STRINGS.CHARACTERS.TAKUMI.DESCRIBE.YUMI = "The Fujin Yumi. The bow chose me as its wielder."
 STRINGS.RECIPE_DESC.TAKUMITRAP = "A sturdier trap made by a hunter." 
 STRINGS.RECIPE_DESC.TAKUMI_SEAL = "Used to promote at level 20."
 STRINGS.RECIPE_DESC.YUMI = "Bow of the wind god."
-STRINGS.RECIPE_DESC.SKADI = "Seek power at all costs."
 
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.takumi = "The Wildcard"
@@ -115,7 +106,6 @@ STRINGS.CHARACTERS.TAKUMI = require "speech_takumi"
 STRINGS.NAMES.TAKUMI = "Takumi"
 
 AddMinimapAtlas("images/map_icons/takumi.xml")
-
 
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter("takumi", "MALE")
@@ -147,9 +137,6 @@ takumi_seal.atlas = "images/inventoryimages/takumi_seal.xml"
 
 local yumi = AddRecipe("yumi", {Ingredient("rocks", 10),Ingredient("goldnugget", 10)}, RECIPETABS.TAKUMI, TECH.NONE, nil, nil, nil, nil, "takumi" )
 yumi.atlas = "images/inventoryimages/yumi.xml"
-
-local skadi = AddRecipe("skadi", {Ingredient("yumi", 1, "images/inventoryimages/yumi.xml"),Ingredient("nightmarefuel", 10)}, RECIPETABS.TAKUMI, TECH.NONE, nil, nil, nil, nil, "takumi" )
-skadi.atlas = "images/inventoryimages/skadi.xml"
 
 --Tuning
 TUNING.TAKUMI = {}
